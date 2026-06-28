@@ -18,6 +18,45 @@ public class Note {
     private String content;
 
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAT;
+    private LocalDateTime updatedAt;
+
+    public Note() {
+    }
+
+    public long getId(){
+        return id;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getContent(){
+        return content;
+    }
+
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAT(){
+        return updatedAt;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public void setContent(String content){
+        this.content = content;
+    }
+    public void setCreatedAt(LocalDateTime createdAt){
+        this.createdAt =createdAt;
+    }
+    public void setUpdatedAT(LocalDateTime updatedAT){
+        this.updatedAt = updatedAT;
+    }
 
 }
