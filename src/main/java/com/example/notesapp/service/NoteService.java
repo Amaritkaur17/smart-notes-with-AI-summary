@@ -4,6 +4,7 @@ import com.example.notesapp.entity.Note;
 import com.example.notesapp.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,8 @@ public class NoteService {
     }
 
     public Note createNote(Note note){
+        note.setCreatedAt(LocalDateTime.now());
+        note.setUpdatedAT(LocalDateTime.now());
         return noteRepository.save(note);
     }
 
