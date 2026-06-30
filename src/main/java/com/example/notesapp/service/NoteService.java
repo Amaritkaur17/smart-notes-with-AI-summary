@@ -34,4 +34,15 @@ public class NoteService {
     public void deleteNote(Long id){
         noteRepository.deleteById(id);
     }
+    public Note updateNote(Long id,Note updatedNote){
+        Optional<Note> exsistingNote = noteRepository.findById(id);
+        if(exsistingNote.isPresent()){
+            Note note = exsistingNote.get();
+            note.setTitle(updatedNote.getTitle());
+            note.setContent(updatedNote.getContent());
+            note.setUpdatedAT(LocalDateTime.now());
+            return noteRepository.save(note);
+        }
+        return null;
+    }
 }
