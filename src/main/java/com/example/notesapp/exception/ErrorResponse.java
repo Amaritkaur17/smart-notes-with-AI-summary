@@ -24,6 +24,7 @@ public class ErrorResponse {
         this.path = path;
     }
 
+    public ErrorResponse(){}
     public LocalDateTime getTimeStamp(){
         return timeStamp;
     }
@@ -70,7 +71,7 @@ public class ErrorResponse {
 
     public void setValidationErrors(Map<String ,String > validationErrors){
         this.validationErrors = validationErrors;
-
-
     }
+
+
 }
