@@ -1,6 +1,7 @@
 package com.example.notesapp.service;
 
 import com.example.notesapp.entity.Note;
+import com.example.notesapp.exception.ResourceNotFoundException;
 import com.example.notesapp.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,7 @@ public class NoteService {
             note.setUpdatedAT(LocalDateTime.now());
             return noteRepository.save(note);
         }
-        return null;
+        //return null;
+        throw new ResourceNotFoundException("Note not found with ID :"+id);
     }
 }
