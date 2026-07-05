@@ -3,6 +3,8 @@ package com.example.notesapp.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 // entity annotation allows JPA to create table in DB with the name same as class name
 // for the custom table name : @Table(name = "notes")
@@ -27,10 +29,14 @@ public class Note {
         return id;
     }
 
+    @NotBlank
+    @Size(max = 100)
     public String getTitle(){
         return title;
     }
 
+    @NotBlank
+    @Size(max = 500)
     public String getContent(){
         return content;
     }

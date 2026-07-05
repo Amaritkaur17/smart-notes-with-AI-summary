@@ -2,6 +2,7 @@ package com.example.notesapp.controller;
 
 import com.example.notesapp.entity.Note;
 import com.example.notesapp.service.NoteService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class NoteController {
     }
 
     @PostMapping
-    public Note createNote(@RequestBody Note note){
+    public Note createNote(@Valid @RequestBody Note note){
         return noteService.createNote(note);
     }
     @GetMapping

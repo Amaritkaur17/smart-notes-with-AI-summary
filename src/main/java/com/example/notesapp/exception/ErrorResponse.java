@@ -1,6 +1,7 @@
 package com.example.notesapp.exception;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public class ErrorResponse {
     private LocalDateTime timeStamp;
@@ -13,6 +14,7 @@ public class ErrorResponse {
 
     private String path;
 
+    private Map<String,String> validationErrors;
 
     public ErrorResponse(LocalDateTime timeStamp,int status, String error, String message, String path){
         this.timeStamp = timeStamp;
@@ -60,5 +62,15 @@ public class ErrorResponse {
 
     public void setPath(String path){
         this.path = path;
+    }
+
+    public Map<String,String> getValidationErrors(){
+        return validationErrors;
+    }
+
+    public void setValidationErrors(Map<String ,String > validationErrors){
+        this.validationErrors = validationErrors;
+
+
     }
 }
