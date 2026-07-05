@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="147ed0b3-2565-4024-b049-c23310febcfe" name="Changes" comment="feat: implement create note API and verify persistence">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/NoteService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
