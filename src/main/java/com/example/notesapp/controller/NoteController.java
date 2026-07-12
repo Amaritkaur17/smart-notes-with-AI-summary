@@ -1,6 +1,7 @@
 package com.example.notesapp.controller;
 
 import com.example.notesapp.dto.NoteRequest;
+import com.example.notesapp.dto.NoteResponse;
 import com.example.notesapp.entity.Note;
 import com.example.notesapp.service.NoteService;
 import jakarta.validation.Valid;
@@ -20,12 +21,19 @@ public class NoteController {
     }
 
     @PostMapping
-    public Note createNote(@Valid @RequestBody NoteRequest noteRequest){
+    public NoteResponse createNote(@Valid @RequestBody NoteRequest noteRequest){
 
         Note note = new Note();
         note.setTitle(noteRequest.getTitle());
         note.setContent(noteRequest.getContent());
-        return noteService.createNote(note);
+        Note savedNote = noteService.createNote(note);
+        NoteResponse response = new NoteResponse();
+        response.setId(savedNote.getId());
+        response.setTitle(savedNote.getTitle());
+        response.setContent(savedNote.getContent());
+        response.setCreatedAt(savedNote.getCreatedAt());
+        response.setUpdatedAT(savedNote.getUpdatedAT());
+        return response;
     }
     @GetMapping
     public List<Note> getAllNotes(){
