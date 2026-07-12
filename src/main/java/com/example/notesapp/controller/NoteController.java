@@ -3,6 +3,7 @@ package com.example.notesapp.controller;
 import com.example.notesapp.dto.NoteRequest;
 import com.example.notesapp.dto.NoteResponse;
 import com.example.notesapp.entity.Note;
+import com.example.notesapp.mapper.NoteMapper;
 import com.example.notesapp.service.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +16,19 @@ import java.util.Optional;
 public class NoteController {
 
     private final NoteService noteService;
+    private final NoteMapper noteMapper;
 
-    public NoteController(NoteService noteService){
+    public NoteController(NoteService noteService, NoteMapper noteMapper) {
         this.noteService = noteService;
+        this.noteMapper = noteMapper;
     }
 
     @PostMapping
     public NoteResponse createNote(@Valid @RequestBody NoteRequest noteRequest){
 
-        Note note = new Note();
-        note.setTitle(noteRequest.getTitle());
-        note.setContent(noteRequest.getContent());
-        Note savedNote = noteService.createNote(note);
-        NoteResponse response = new NoteResponse();
-        response.setId(savedNote.getId());
-        response.setTitle(savedNote.getTitle());
-        response.setContent(savedNote.getContent());
-        response.setCreatedAt(savedNote.getCreatedAt());
-        response.setUpdatedAT(savedNote.getUpdatedAT());
-        return response;
+        Note note = noteMapper.toEntity(noteRequest);
+        Note savedNote =noteService.createNote(note);
+        return noteMapper.toResponse(savedNote);
     }
     @GetMapping
     public List<Note> getAllNotes(){
