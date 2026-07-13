@@ -28,9 +28,11 @@ public class NoteService {
         return noteRepository.findAll();
     }
 
-    public Optional<Note> getNoteById(Long id){
-        return noteRepository.findById(id);
-    }
+    public Note getNoteById(Long id){
+     return noteRepository.findById(id)
+                    .orElseThrow(() ->
+                            new ResourceNotFoundException("Note not found with ID : " + id));
+        }
 
     public void deleteNote(Long id){
         noteRepository.deleteById(id);

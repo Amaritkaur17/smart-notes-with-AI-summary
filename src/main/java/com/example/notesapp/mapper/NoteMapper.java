@@ -5,6 +5,10 @@ import com.example.notesapp.dto.NoteResponse;
 import com.example.notesapp.entity.Note;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class NoteMapper {
 
@@ -24,4 +28,14 @@ public class NoteMapper {
         response.setUpdatedAT(note.getUpdatedAT());
         return response;
     }
+
+    public List<NoteResponse> toResponseList(List<Note> noteList){
+        List<NoteResponse> responseList = new ArrayList<>();
+        for(Note note : noteList){
+          NoteResponse response =  toResponse(note);
+          responseList.add(response);
+        }
+        return responseList;
+    }
+
 }

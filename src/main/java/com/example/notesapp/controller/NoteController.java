@@ -8,6 +8,7 @@ import com.example.notesapp.service.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,12 +32,14 @@ public class NoteController {
         return noteMapper.toResponse(savedNote);
     }
     @GetMapping
-    public List<Note> getAllNotes(){
-        return noteService.getAllNotes();
+    public List<NoteResponse> getAllNotes(){
+        List<Note> noteList = noteService.getAllNotes();
+        return noteMapper.toResponseList(noteList);
     }
     @GetMapping("/{id}")
-    public Optional<Note> getNoteById(@PathVariable("id") Long id){
-        return noteService.getNoteById(id);
+    public NoteResponse getNoteById(@PathVariable("id") Long id){
+      Note note = noteService.getNoteById(id);
+      return noteMapper.toResponse(note);
     }
     @DeleteMapping("/{id}")
     public void deleteNote(@PathVariable("id") Long id){
@@ -44,7 +47,9 @@ public class NoteController {
     }
 
     @PutMapping("/{id}")
-    public Note updateNote(@PathVariable("id") Long id, @RequestBody Note updatedNote){
-        return noteService.updateNote(id,updatedNote);
+    public NoteResponse updateNote(@PathVariable("id") Long id, @RequestBody NoteRequest updatedNote){
+        Note note = noteMapper.toEntity(updatedNote);
+        Note noteUpdated = noteService.updateNote(id,note);
+        return noteMapper.toResponse(noteUpdated);
     }
 }
