@@ -6,6 +6,9 @@ import com.example.notesapp.entity.Note;
 import com.example.notesapp.mapper.NoteMapper;
 import com.example.notesapp.service.NoteService;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -32,9 +35,9 @@ public class NoteController {
         return noteMapper.toResponse(savedNote);
     }
     @GetMapping
-    public List<NoteResponse> getAllNotes(){
-        List<Note> noteList = noteService.getAllNotes();
-        return noteMapper.toResponseList(noteList);
+    public Page<NoteResponse> getAllNotes(@ParameterObject Pageable pageable){
+        Page<Note>  notePage = noteService.getAllNotes(pageable);
+        return notePage.map(noteMapper::toResponse);
     }
     @GetMapping("/{id}")
     public NoteResponse getNoteById(@PathVariable("id") Long id){

@@ -5,6 +5,8 @@ import com.example.notesapp.exception.ResourceNotFoundException;
 import com.example.notesapp.repository.NoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,8 +33,8 @@ public class NoteService {
         return savedNote;
     }
 
-    public List<Note> getAllNotes(){
-        return noteRepository.findAll();
+    public Page<Note> getAllNotes(Pageable pageable){
+        return noteRepository.findAll(pageable);
     }
 
     public Note getNoteById(Long id){

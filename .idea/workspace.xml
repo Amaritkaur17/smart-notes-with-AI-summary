@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/NoteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/NoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +70,10 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.SmartNotesApiApplication">
-    <configuration name="SmartNotesApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.com.example.notesapp.SmartNotesApiApplication">
+    <configuration name="com.example.notesapp.SmartNotesApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../softwares/Java/jdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.notesapp.SmartNotesApiApplication" />
       <module name="smart-notes-api" />
       <extension name="coverage">
@@ -93,9 +94,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.com.example.notesapp.SmartNotesApiApplication" />
+      <item itemvalue="JUnit.All in smart-notes-api" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SmartNotesApiApplication" />
+        <item itemvalue="Application.com.example.notesapp.SmartNotesApiApplication" />
         <item itemvalue="JUnit.All in smart-notes-api" />
       </list>
     </recent_temporary>
@@ -165,6 +170,17 @@
     <MESSAGE value="fix: add getters, setters, and constructors" />
     <MESSAGE value="feat: implement create note API and verify persistence" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: implement create note API and verify persistence" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notesapp/service/NoteService.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
