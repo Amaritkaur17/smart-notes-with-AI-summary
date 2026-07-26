@@ -1,5 +1,6 @@
 package com.example.notesapp.service;
 
+import com.example.notesapp.dto.NoteResponse;
 import com.example.notesapp.entity.Note;
 import com.example.notesapp.exception.ResourceNotFoundException;
 import com.example.notesapp.repository.NoteRepository;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,5 +63,13 @@ public class NoteService {
 
         //return null;
         throw new ResourceNotFoundException("Note not found with ID :"+id);
+    }
+
+    public List<Note> searchNoteByTitle(String keyword){
+       return noteRepository.findByTitleContainingIgnoreCase(keyword);
+    }
+
+    public List<Note> searchByTitleAndContent(String Keyword){
+        return noteRepository.findByTitleContainingIgnoreCaseAndContentContainingIgnoreCase(Keyword,Keyword);
     }
 }

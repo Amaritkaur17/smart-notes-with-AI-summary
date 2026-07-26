@@ -28,31 +28,46 @@ public class NoteController {
     }
 
     @PostMapping
-    public NoteResponse createNote(@Valid @RequestBody NoteRequest noteRequest){
+    public NoteResponse createNote(@Valid @RequestBody NoteRequest noteRequest) {
 
         Note note = noteMapper.toEntity(noteRequest);
-        Note savedNote =noteService.createNote(note);
+        Note savedNote = noteService.createNote(note);
         return noteMapper.toResponse(savedNote);
     }
+
     @GetMapping
-    public Page<NoteResponse> getAllNotes(@ParameterObject Pageable pageable){
-        Page<Note>  notePage = noteService.getAllNotes(pageable);
+    public Page<NoteResponse> getAllNotes(@ParameterObject Pageable pageable) {
+        Page<Note> notePage = noteService.getAllNotes(pageable);
         return notePage.map(noteMapper::toResponse);
     }
+
     @GetMapping("/{id}")
-    public NoteResponse getNoteById(@PathVariable("id") Long id){
-      Note note = noteService.getNoteById(id);
-      return noteMapper.toResponse(note);
+    public NoteResponse getNoteById(@PathVariable("id") Long id) {
+        Note note = noteService.getNoteById(id);
+        return noteMapper.toResponse(note);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteNote(@PathVariable("id") Long id){
+    public void deleteNote(@PathVariable("id") Long id) {
         noteService.deleteNote(id);
     }
 
     @PutMapping("/{id}")
-    public NoteResponse updateNote(@PathVariable("id") Long id, @RequestBody NoteRequest updatedNote){
+    public NoteResponse updateNote(@PathVariable("id") Long id, @RequestBody NoteRequest updatedNote) {
         Note note = noteMapper.toEntity(updatedNote);
-        Note noteUpdated = noteService.updateNote(id,note);
+        Note noteUpdated = noteService.updateNote(id, note);
         return noteMapper.toResponse(noteUpdated);
     }
+
+    @GetMapping("/search")
+    public List<NoteResponse> searchNotes(@RequestParam String keyword) {
+        List<Note> noteListSearched = noteService.searchNoteByTitle(keyword);
+        return noteMapper.toResponseList(noteListSearched);
+    }
+    @GetMapping("/search-by-title-and-content")
+    public List<NoteResponse> searchByTitleAndContent(@RequestParam String keyword){
+        List<Note> noteList = noteService.searchByTitleAndContent(keyword);
+        return noteMapper.toResponseList(noteList);
+    }
 }
+
