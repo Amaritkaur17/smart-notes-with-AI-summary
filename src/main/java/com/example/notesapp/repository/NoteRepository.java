@@ -3,6 +3,8 @@ package com.example.notesapp.repository;
 import com.example.notesapp.entity.Note;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -23,8 +25,12 @@ import java.util.List;
 
 
 public interface NoteRepository extends JpaRepository<Note,Long> {
-
-    List<Note> findByTitleContainingIgnoreCase(String title);
+     @Query("""
+              SELECT n 
+             FROM Note n
+             WHERE LOWER(n.title) LIKE LOWER(CONCAT('%',:keyword,'%'))
+             """)
+    List<Note>SearchByTitle(@Param("keyword")String title);
 
     List<Note> findByTitleContainingIgnoreCaseAndContentContainingIgnoreCase(String title,String content);
 

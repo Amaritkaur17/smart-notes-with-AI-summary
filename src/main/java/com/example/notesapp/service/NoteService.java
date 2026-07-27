@@ -66,7 +66,7 @@ public class NoteService {
     }
 
     public List<Note> searchNoteByTitle(String keyword){
-       return noteRepository.findByTitleContainingIgnoreCase(keyword);
+       return noteRepository.SearchByTitle(keyword);
     }
 
     public List<Note> searchByTitleAndContent(String Keyword){
