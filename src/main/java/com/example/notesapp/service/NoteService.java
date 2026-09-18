@@ -66,10 +66,10 @@ public class NoteService {
     }
 
     public List<Note> searchNoteByTitle(String keyword){
-       return noteRepository.SearchByTitle(keyword);
+       return noteRepository.searchByTitle(keyword);
     }
 
     public List<Note> searchByTitleAndContent(String Keyword){
-        return noteRepository.findByTitleContainingIgnoreCaseAndContentContainingIgnoreCase(Keyword,Keyword);
+        return noteRepository.findByTitleContent(Keyword,Keyword);
     }
 }
