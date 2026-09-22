@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="147ed0b3-2565-4024-b049-c23310febcfe" name="Changes" comment="feat: implement create note API and verify persistence">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/dto/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notesapp/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +78,13 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.com.example.notesapp.SmartNotesApiApplication">
-    <configuration name="com.example.notesapp.SmartNotesApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.SmartNotesApiApplication">
+    <configuration name="SmartNotesApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../softwares/Java/jdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="JWT_SECRET" value="EIr6U/PbX+ZwYAKJFH/F6J0NQk5CFjy/c/cKHD0uDQA=" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="com.example.notesapp.SmartNotesApiApplication" />
       <module name="smart-notes-api" />
       <extension name="coverage">
@@ -96,12 +106,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.com.example.notesapp.SmartNotesApiApplication" />
+      <item itemvalue="Application.SmartNotesApiApplication" />
       <item itemvalue="JUnit.All in smart-notes-api" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.example.notesapp.SmartNotesApiApplication" />
+        <item itemvalue="Application.SmartNotesApiApplication" />
         <item itemvalue="JUnit.All in smart-notes-api" />
       </list>
     </recent_temporary>
