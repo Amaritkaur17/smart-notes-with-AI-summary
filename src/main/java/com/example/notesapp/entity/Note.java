@@ -22,6 +22,18 @@ public class Note {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @ManyToOne(fetch = FetchType.LAZY,optional=false)
+    @JoinColumn(name = "user_id",nullable=false)
+    private User owner;
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public Note() {
     }
 
