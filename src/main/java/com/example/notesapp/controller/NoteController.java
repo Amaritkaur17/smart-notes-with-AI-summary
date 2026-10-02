@@ -2,18 +2,18 @@ package com.example.notesapp.controller;
 
 import com.example.notesapp.dto.NoteRequest;
 import com.example.notesapp.dto.NoteResponse;
+import com.example.notesapp.dto.NoteSummaryResponse;
 import com.example.notesapp.entity.Note;
 import com.example.notesapp.mapper.NoteMapper;
 import com.example.notesapp.service.NoteService;
+import com.example.notesapp.service.NoteSummaryService;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/notes")
@@ -21,10 +21,12 @@ public class NoteController {
 
     private final NoteService noteService;
     private final NoteMapper noteMapper;
+    private final NoteSummaryService noteSummaryService;
 
-    public NoteController(NoteService noteService, NoteMapper noteMapper) {
+    public NoteController(NoteService noteService, NoteMapper noteMapper, NoteSummaryService noteSummaryService) {
         this.noteService = noteService;
         this.noteMapper = noteMapper;
+        this.noteSummaryService = noteSummaryService;
     }
 
     @PostMapping
@@ -68,6 +70,12 @@ public class NoteController {
     public List<NoteResponse> searchByTitleAndContent(@RequestParam String keyword){
         List<Note> noteList = noteService.searchByTitleAndContent(keyword);
         return noteMapper.toResponseList(noteList);
+    }
+    @PostMapping("/{id}/summary")
+    public NoteSummaryResponse summarizeNote(@PathVariable Long id){
+        Note note = noteService.getNoteById(id);
+        String summary = noteSummaryService.summarize(note.getContent());
+        return new NoteSummaryResponse(note.getId(),summary);
     }
 }
 
